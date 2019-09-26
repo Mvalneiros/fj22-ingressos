@@ -23,9 +23,7 @@ public class Sessao {
 	
 	private LocalTime horario;
 	
-   /**		
-	* @deprecated hibernate only
-	*/
+   
 	public Sessao () {
 		
 	}
