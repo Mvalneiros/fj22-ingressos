@@ -48,7 +48,7 @@ public class SessaoController {
 
 		return new ModelAndView("redirect:/admin/sala/" + form.getSalaId() + "/sessoes");
 	}
-		return form(form.getSalaId(),form);
+		return form(form.getSalaId(),form); 
 		
 	}		
 
