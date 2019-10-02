@@ -6,13 +6,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import br.com.caelum.ingresso.model.DetalhesDoFilme;
 import br.com.caelum.ingresso.model.Filme;
 
 @Component
 public class OmdbClient {
 
-	public Optional<DetalhesDoFilme> request(Filme filme) {
+	public <T> Optional<T> request(Filme filme, Class<T> tClass) {
 
 		RestTemplate client = new RestTemplate();
 
@@ -22,8 +21,7 @@ public class OmdbClient {
 
 		try {
 
-			DetalhesDoFilme detalhesDoFilme = client.getForObject(url, DetalhesDoFilme.class);
-			return Optional.ofNullable(detalhesDoFilme);
+			return Optional.of(client.getForObject(url, tClass));
 
 		} catch (RestClientException e) {
 			return Optional.empty();
